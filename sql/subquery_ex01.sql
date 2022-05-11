@@ -5,7 +5,12 @@ where i1.ANIMAL_ID = o1.ANIMAL_ID
     and i1.SEX_UPON_INTAKE like 'Intact%'
     and (o1.SEX_UPON_OUTCOME like 'Spayed%' or o1.SEX_UPON_OUTCOME like 'Neutered%')
     
-    
+    -보호소에서 중성화한 동물-조인
+select i1.ANIMAL_ID, i1.ANIMAL_TYPE, i1.NAME, i1.SEX_UPON_INTAKE, o1.SEX_UPON_OUTCOME
+from ANIMAL_INS i1 inner join ANIMAL_OUTS o1
+on i1.ANIMAL_ID = o1.ANIMAL_ID
+where i1.SEX_UPON_INTAKE like 'Intact%'
+    and (o1.SEX_UPON_OUTCOME like 'Spayed%' or o1.SEX_UPON_OUTCOME like 'Neutered%')
 
 --보호소에서 중성화한 동물-서브쿼리
 SELECT ANIMAL_ID, ANIMAL_TYPE, NAME 
