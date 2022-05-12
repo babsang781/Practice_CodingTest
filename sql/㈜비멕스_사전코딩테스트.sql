@@ -33,3 +33,11 @@ from ANIMAL_INS a
 where a.ANIMAL_ID not in
   (select a.ANIMAL_ID from ANIMAL_INS a
   where a.ANIMAL_TYPE ='cat' and a.INTAKE_CONDITION = 'sick')
+  
+  
+--left join 사용 방법, 참고 링크 https://ywlee.tistory.com/46
+select s.ANIMAL_ID, s.ANIMAL_TYPE, s.INTAKE_CONDITION
+from ANIMAL_INS as s
+left join(select a.ANIMAL_ID from ANIMAL_INS as a where a.ANIMAL_TYPE ='cat' and a.INTAKE_CONDITION = 'sick') as s2
+on s.ANIMAL_INS = s2.ANIMAL_INS
+where s2.ANIMAL_INS is null
