@@ -2,7 +2,7 @@
 
 -- 데이터가 없는 시간도 나와야함.
 
-<mysql> 
+-- <mysql> 
 SELECT A.HOUR
     , case when b.COUNT is null then 0
         else b.COUNT
