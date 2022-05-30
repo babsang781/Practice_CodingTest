@@ -15,3 +15,7 @@ FROM (select row_number() over(partition by '1') -1 as hour from ANIMAL_OUTS lim
         ORDER BY HOUR ) B
     ON A.HOUR = B.HOUR
 
+-- 숫자 만들기 
+select row_number() over() -1 AS NAME -- over 안에 partition by '1' 이 없어도 가능, '2' 안 됨. -1 대신 0도 안됨 (왜?)
+from ANIMAL_OUTS 
+limit 00
