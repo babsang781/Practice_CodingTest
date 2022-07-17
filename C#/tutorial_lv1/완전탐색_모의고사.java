@@ -7,7 +7,7 @@ class Solution {
         int noi1 =0,noi2=0,noi3=0,max = 0 ;
         
         for(int i = 1 ; i <= answers.length ; i++){
-            noi1 = i%5;
+            noi1 = (i%5 ==0)? 5: i % 5;
             
             if(i%2==1){
                 noi2 = 2;
@@ -44,19 +44,24 @@ class Solution {
                 max= temp[i];
             }
         }
+        if(max == 0 ){
+            int[] answer = {};
+             return answer;
+        }else{
+            ArrayList<Integer> arl = new ArrayList<>();
+            for(int i= 0; i<3;i++){
+                if(temp[i]==max) arl.add(i+1);
+            }
         
-        ArrayList<Integer> arl = new ArrayList<>();
-        for(int i= 0; i<3;i++){
-            if(temp[i]==max) arl.add(i+1);
+            int[] answer = new int[arl.size()];
+            for(int i = 0; i < arl.size(); i++){
+                answer[i] = arl.get(i);
+            }
+             return answer;
         }
         
-        int[] answer = new int[arl.size()];
-        for(int i = 0; i < arl.size(); i++){
-            answer[i] = arl.get(i);
-        }
         
-        return answer;
+       
     }
 }
 // 전체 1~3번 정답수 배열 생성 >>> 반복문 시작 >>> 1~3번 각 수포자 조건문 생성 해당시 수포자에 +=1 >>> 반복 문 종료시 배열의 최댓값을 찾고, 최댓값과 같은 배열 위치는 index+1 아닌 값은 0으로 temp2에 입력 0이 아닌 값마 answer에 입력 같으면 모두 입력
-// 9,10, 12,13 틀리는 중
